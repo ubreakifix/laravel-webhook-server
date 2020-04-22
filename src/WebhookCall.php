@@ -2,7 +2,7 @@
 
 namespace Spatie\WebhookServer;
 
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Spatie\WebhookServer\BackoffStrategy\BackoffStrategy;
 use Spatie\WebhookServer\Exceptions\CouldNotCallWebhook;
 use Spatie\WebhookServer\Exceptions\InvalidBackoffStrategy;
@@ -30,7 +30,7 @@ class WebhookCall
         $config = config('webhook-server');
 
         return (new static())
-            ->uuid(Str::uuid())
+            ->uuid(Uuid::uuid4())
             ->onQueue($config['queue'])
             ->useHttpVerb($config['http_verb'])
             ->maximumTries($config['tries'])
@@ -175,14 +175,14 @@ class WebhookCall
     {
         $this->prepareForDispatch();
 
-        dispatch($this->callWebhookJob);
+        \Bus::dispatch($this->callWebhookJob);
     }
 
     public function dispatchNow(): void
     {
         $this->prepareForDispatch();
 
-        dispatch_now($this->callWebhookJob);
+        \Bus::dispatchNow($this->callWebhookJob);
     }
 
     protected function prepareForDispatch(): void

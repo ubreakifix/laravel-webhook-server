@@ -23,7 +23,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/bus": "^5.2",
         "illuminate/queue": "^5.2",
-        "illuminate/support": "^5.2"
+        "illuminate/support": "^5.2",
+        "ramsey/uuid": "^3.9.3"
     },
     "require-dev": {
         "mockery/mockery": "^1.3",
