@@ -24,7 +24,7 @@
         "illuminate/bus": "^5.2",
         "illuminate/queue": "^5.2",
         "illuminate/support": "^5.2",
-        "ramsey/uuid": "^3.9.3"
+        "ramsey/uuid": "^3.8"
     },
     "require-dev": {
         "mockery/mockery": "^1.3",
